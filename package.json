@@ -1,0 +1,46 @@
+{
+  "name": "react-router-menu-example",
+  "version": "0.1.0",
+  "description": "testing out react-router-menu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build ; npm run server",
+    "build": "webpack -d --config config/webpack.config.js --progress",
+    "server": "cd server ; . ./env-for-build.sh ;  babel-watch server.js",
+    "pack": "webpack -p --config config/webpack.config.js --progress",
+    "dev": "npm-run-all --parallel watch:*",
+    "watch:hotload": "webpack-dev-server --config config/webpack.config.js --devtool eval-source --progress --colors --hot --inline --history-api-fallback | grep -v 'built' ",
+    "watch:start-api": "cd server; sudo ./node_modules/.bin/nodemon server.js 8081 ",
+    "watch:start-browser": "google-chrome http://localhost:8080/"
+  },
+  "keywords": [
+    "react",
+    "react-router",
+    "react-router-menu"
+  ],
+  "author": "Martin A. Jackson",
+  "license": "ISC",
+  "dependencies": {
+    "@version/react-router-v3": "^1.0.0",
+    "antd": "^3.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"    
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015-webpack": "^6.4.3",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "file-loader": "^1.1.9",
+    "json-loader": "^0.5.7",
+    "nodemon": "^1.15.1",
+    "npm-run-all": "^4.1.2",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0",
+    "webpack-dev-server": "^2.11.1"
+  }
+}

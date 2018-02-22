@@ -1,0 +1,19 @@
+{
+  "name": "serverside",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "babel-watch": "^2.0.6",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-watch": "^2.0.6",
+    "nodemon": "^1.15.1"
+  },
+  "scripts": {
+    "run:server": "babel-watch server.js",
+    "run:prod": "babel-node server.js"
+  }
+}
