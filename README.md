@@ -1,54 +1,71 @@
 
+## Description
 
-## webpack cli shortcuts used in this project
+This is a test project using code from Djyde's [react-router-menu](https://github.com/djyde/react-router-menu), but
+upgrading to React-Router 4.x, React 16.x.
 
-| --watch, -w | Watch the filesystem for changes |
-| -d | --debug --devtool cheap-module-eval-source-map --output-pathinfo |
-| -p | 	--optimize-minimize --define process.env.NODE_ENV="production", see building for production |
-
-
-##  Dependancies
-
-Uses NCTR's local repository
-```
- npm set registry http://dev.nctr.fda.gov:4873
- -- or --
- yarn config set registry http://dev.nctr.fda.gov:4873 -g
-```
+The project is split into **_two_** sections:
+- **Front-End** Single Page App with React components, React-Router, React-Router.  These modules can be found in `src/` directory.
+- **Back-End** NodeJS, Express, API logic needed by application.  These modules can be found in `server/` directory.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`   (runs in parallel `npm run:react` and `npm run:server`)
+### `npm run dev`   (live development environment)
+Runs the app in the development mode with every source file save being hot-loaded into the Browser
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+All three of these items are run in parallel:
+- **"watch:hotload"**:
+   runs webpack-dev-server on Port 8080
 
-Runs a node server in the development mode.<br>
-This supply an API used by the application.
-Open [http://localhost:3001](http://localhost:3001) to test it seperately in the browser.
+- **"watch:start-api"**:
+   starts the API server (Nodejs/Express) on port 8081
+   so anything /api/ the webpack dev server will forward the request to port 8081 for a response
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- **"watch:start-browser"**:
+   opens up the google-chrome browser to http://localhost:8080/"
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-**Martin Note:** I don't like all the separate files this create-react-app script generated.  The config directory contains an alternative way to build for production. (see npm run dist)
+### `npm start`   (near production testing)
+- builds the bundle.js with sourcemap and debug info (aka. `npm run build`)
+- runs the server for API calls and serving the application (`npm run server`).
 
 
-### `npm run dist`
+### `npm run pack` (prep for a production release)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+like `npm run build`, but optimizes the bundle.js for the best performance.  The build is minified and your app is ready to be deployed!
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+----------------
 
-See the section about [deployment](#deployment) for more information.
+## Project Structure
+
+```
+$ tree -I node_modules
+.
+├── config
+│   └── webpack.config.js         config file for webpack
+├── package.json                  project's npm requirements and scripts
+├── README.md                     This introduction
+├── server
+│   ├── package.json              seperate project dependancies for the back-end
+│   ├── public
+│   │   ├── bundle.js             built by webpack from src/*.js
+│   │   ├── bundle.js.map         sourcemaps built by webpack   
+│   │   └── index.html            starter html
+│   └── server.js                 logic for NodeJS back-end
+└── src
+    ├── index.js                  Front-end entry
+    └── ReactRouterMenu.js        code modified from react-route-menu
+
+```
+
+
+----------------
+
+### webpack cli shortcuts used in this package.json scripts section
+
+| Shortcut    | Replaces                         |
+| ----------- | -------------------------------- |
+| -w          | --watch                          |
+| -d          | --debug --devtool cheap-module-eval-source-map --output-pathinfo |
+| -p          | 	--optimize-minimize --define process.env.NODE_ENV="production", see building for production |
