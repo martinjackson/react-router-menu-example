@@ -11,10 +11,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 // Object.defineProperty(exports, "__esModule", { value: true });
 
 var React = require("react");
-var antd_1 = require("antd");
-var react_router_1 = require("react-router");
-var MenuItem = antd_1.Menu.Item;
-var SubMenu = antd_1.Menu.SubMenu;
+import { Menu } from 'antd'
+import { Link } from 'react-router-dom'
+
+import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
+
 var createMenuItem = function (route) {
     if (route.getChildRoutes || route.getIndexRoute) {
         console.warn('getChildRoutes and getIndexRoute are not supported yet.');
@@ -24,11 +25,11 @@ var createMenuItem = function (route) {
         return createMenuItemFromRoutes(route.childRoutes);
     }
     if (!route.childRoutes && !route.getChildRoutes) {
-        return (React.createElement(MenuItem, { key: route.path },
-            React.createElement(react_router_1.Link, { to: route.path }, route.title)));
+        return (React.createElement(Menu.Item, { key: route.path },
+            React.createElement(Link, { to: route.path }, route.title)));
     }
     else {
-        return (React.createElement(SubMenu, { key: route.path, title: route.title }, createMenuItemFromRoutes(route.childRoutes)));
+        return (React.createElement(Menu.SubMenu, { key: route.path, title: route.title }, createMenuItemFromRoutes(route.childRoutes)));
     }
 };
 var createMenuItemFromRoutes = function (childRoutes) {
@@ -40,7 +41,7 @@ var createMenuItemFromRoutes = function (childRoutes) {
 
 var createReactRouterMenu = function (route) {
     var r = createMenuItem(route);
-    return function (props) { return (React.createElement(antd_1.Menu, __assign({}, props), r)); };
+    return function (props) { return (React.createElement(Menu, __assign({}, props), r)); };
 };
 
 export default {'createReactRouterMenu':createReactRouterMenu};

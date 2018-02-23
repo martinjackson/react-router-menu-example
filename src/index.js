@@ -1,6 +1,18 @@
+// TODO: child components are not showing in the non-menu area
+
+// #FFFF
+// #3cb371
+// rgba(100,100,0,0.5)
+// rgb(133,153,0)
+// Tomato
+// DodgerBlue
+// MediumSeaGreen
+// Violet
+// green
+
 import * as React from 'react'
 import { render } from 'react-dom'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import rrMenu from './ReactRouterMenu'    // from 'react-router-menu'
 
@@ -38,7 +50,7 @@ const mountNode = document.getElementById('root')
 
 // Render the router
 render((
-  <HashRouter routes={routes}>
+  <BrowserRouter routes={routes}>
     <App />
-  </HashRouter>
+  </BrowserRouter>
 ), mountNode)
