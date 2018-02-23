@@ -1,23 +1,12 @@
-// TODO: child components are not showing in the non-menu area
-
-// #FFFF
-// #3cb371
-// rgba(100,100,0,0.5)
-// rgb(133,153,0)
-// Tomato
-// DodgerBlue
-// MediumSeaGreen
-// Violet
-// green
 
 import * as React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 
-import rrMenu from './ReactRouterMenu'    // from 'react-router-menu'
+import RRM from './ReactRouterMenu'    // from 'react-router-menu'
 
 // Declare the routes
-const routes = {
+const mtree = {
   title: 'App',
   path: '/',
   component: App,
@@ -25,7 +14,8 @@ const routes = {
     { title: 'Home', path: '/home', component: () => <div>Home</div> },
     { title: 'About', path: '/about', component: () => <div>About</div> },
     {
-      title: 'Help', path: 'help', component: ({ children }) => <div>Help: {children}</div> ,childRoutes: [
+      title: 'Help',
+      childRoutes: [
         { title: 'FAQ', path: '/faq', component: () => <div>FAQ</div> },
         { title: 'Contact', path: '/contact', component: () => <div>Contact</div> }
       ]
@@ -33,15 +23,21 @@ const routes = {
   ]
 }
 
+
+// assumes menu tree is not changing
+const MyMenu = RRM.createMenu(mtree)
+const myRoutes = RRM.createRoutes(mtree);
+// debugger;
+
 // Create a ReactRouterMenu
 function App ({ children }) {
-  const MyReactRouterMenu = rrMenu.createReactRouterMenu(routes)
   return (
     <div>
-      <MyReactRouterMenu mode='horizontal' />
+      <MyMenu mode='horizontal' />
       <div>
         {children}
       </div>
+      { myRoutes }
     </div>
   )
 }
@@ -49,8 +45,9 @@ function App ({ children }) {
 const mountNode = document.getElementById('root')
 
 // Render the router
+// v3   <Router routes={routes}>
 render((
-  <BrowserRouter routes={routes}>
+  <BrowserRouter>
     <App />
   </BrowserRouter>
 ), mountNode)

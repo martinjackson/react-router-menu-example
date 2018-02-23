@@ -12,7 +12,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 var React = require("react");
 import { Menu } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
+
 
 import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
 
@@ -29,7 +30,10 @@ var createMenuItem = function (route) {
             React.createElement(Link, { to: route.path }, route.title)));
     }
     else {
-        return (React.createElement(Menu.SubMenu, { key: route.path, title: route.title }, createMenuItemFromRoutes(route.childRoutes)));
+        let k = route.path
+        if (!k)
+           k = route.title    // TODO: What if the title is not unique ? then not a good key
+        return (React.createElement(Menu.SubMenu, { key: k, title: route.title }, createMenuItemFromRoutes(route.childRoutes)));
     }
 };
 var createMenuItemFromRoutes = function (childRoutes) {
@@ -44,4 +48,34 @@ var createReactRouterMenu = function (route) {
     return function (props) { return (React.createElement(Menu, __assign({}, props), r)); };
 };
 
-export default {'createReactRouterMenu':createReactRouterMenu};
+
+const collectProps = (props) => {
+
+  let kids =  props.childRoutes
+  delete props.childRoutes             // consume childRoutes
+
+  if (props.path && !kids) {
+     return props
+   }
+
+  let items = []
+
+  if (props.path) {
+     items.push(props)
+   }
+
+  if (kids) {
+     let ar = kids.map((props, ii) => collectProps(props))
+     items = items.concat.apply([], ar )    // apply is important to flatten the arrays of arrays
+     }
+
+  return items
+}
+
+const createRoutes = (props) => {
+  const items = collectProps(props)
+  const rt = items.map( (props, i) => <Route key={i} {...props}/>)
+  return rt
+}
+
+export default {'createMenu':createReactRouterMenu, 'createRoutes': createRoutes};

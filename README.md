@@ -1,4 +1,12 @@
 
+
+## webpack cli shortcuts used in this project
+
+| --watch, -w | Watch the filesystem for changes |
+| -d | --debug --devtool cheap-module-eval-source-map --output-pathinfo |
+| -p | 	--optimize-minimize --define process.env.NODE_ENV="production", see building for production |
+
+
 ##  Dependancies
 
 Uses NCTR's local repository
