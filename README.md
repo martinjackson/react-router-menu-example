@@ -8,6 +8,18 @@ The project is split into **_two_** sections:
 - **Front-End** Single Page App with React components, React-Router, React-Router-Menu.  These modules can be found in `src/` directory.
 - **Back-End** NodeJS, Express, API logic needed by application.  These modules can be found in `server/` directory.
 
+## Getting Started
+
+- __Clone this project__
+- have npm fetch all the project's dependencies
+
+```
+  cd ~/projects
+  git clone https://github.com/martinjackson/react-router-menu-example.git
+  cd react-router-menu-example
+  npm run setup
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
