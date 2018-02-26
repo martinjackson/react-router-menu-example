@@ -5,8 +5,8 @@ This is a test project using code from Djyde's [react-router-menu](https://githu
 upgrading to React-Router 4.x, React 16.x.
 
 The project is split into **_two_** sections:
-- **Front-End** Single Page App with React components, React-Router, React-Router-Menu.  These modules can be found in `src/` directory.
-- **Back-End** NodeJS, Express, API logic needed by application.  These modules can be found in `server/` directory.
+- **Front-End** Single Page App with React, React-Router, React-Router-Menu components.  <br/>These modules can be found in `src/` directory.
+- **Back-End** NodeJS, Express, API logic needed by application.  <br/>These modules can be found in `server/` directory.
 
 ## Getting Started
 
