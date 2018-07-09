@@ -11,8 +11,8 @@
     "server": "cd server ; npx babel-watch server.js 3001 &",
 
     "dev": "npm-run-all --parallel watch:*",
-    "watch:hotload": "webpack-dev-server --mode development  --devtool eval-source --progress --colors | grep -v 'built' ",
-    "watch:start-api": "cd server; sudo ./node_modules/.bin/nodemon server.js 8081 ",
+    "watch:hotload": "webpack-dev-server --mode development  --devtool eval-source --progress --colors  --hot --inline | grep -v 'built' ",
+    "watch:start-api": "cd server; npx babel-watch server.js 8081 ",
     "watch:start-browser": "google-chrome http://localhost:8080/",
 
     "build:watch": "webpack -w -d --mode development  --progress",

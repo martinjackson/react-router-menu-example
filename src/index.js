@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import RRM from './ReactRouterMenu'    // from 'react-router-menu'
 import Page from './Page'
+import Status from './Status'
 
 // Declare the routes
 const mtree = {
@@ -12,9 +13,10 @@ const mtree = {
   path: '/',
   component: App,
   childRoutes: [
-    { title: 'Home', path:  '/home',  component: () => <div>Home</div> },
-    { title: 'About', path: '/about', component: () => <div>About</div> },
-    { title: 'Info', path:  '/info',  component: () => <Page url='Info.md' /> },
+    { title: 'Home',   path: '/home',    component: () => <div>Home</div> },
+    { title: 'About',  path: '/about',   component: () => <div>About</div> },
+    { title: 'Info',   path: '/info',    component: () => <Page url='Info.md' /> },
+    { title: 'Server', path: '/server',  component: () => <Status /> },
     {
       title: 'Help',
       childRoutes: [
