@@ -11,20 +11,20 @@ The project is split into **_two_** sections:
 ## Getting Started
 
 - __Clone this project__
-- have npm fetch all the project's dependencies
+- have yarn (or npm) fetch all the project's dependencies
 
 ```
   cd ~/projects
   git clone https://github.com/martinjackson/react-router-menu-example.git
   cd react-router-menu-example
-  npm run setup
+  yarn setup    (or npm run setup)
 ```
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm run dev`   (live development environment)
+### `yarn dev`   (live development environment)
 Runs the app in the development mode with every source file save being hot-loaded into the Browser
 
 All three of these items are run in parallel:
@@ -38,14 +38,14 @@ All three of these items are run in parallel:
 - **"watch:start-browser"**:
    opens up the google-chrome browser to http://localhost:8080/"
 
-### `npm start`   (near production testing)
-- builds the bundle.js with sourcemap and debug info (aka. `npm run build`)
-- runs the server for API calls and serving the application (`npm run server`).
+### `yarn start`   (near production testing)
+- builds the bundle.js with sourcemap and debug info (aka. `yarn build`)
+- runs the server for API calls and serving the application (`yarn server`).
 
 
-### `npm run pack` (prep for a production release)
+### `yarn pack` (prep for a production release)
 
-like `npm run build`, but optimizes the bundle.js for the best performance.  The build is minified and your app is ready to be deployed!
+like `yarn build`, but optimizes the bundle.js for the best performance.  The build is minified and your app is ready to be deployed!
 
 ----------------
 

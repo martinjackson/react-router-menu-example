@@ -10,7 +10,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-watch": "^2.0.6",
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.17.5"
   },
   "scripts": {
     "run:server": "babel-watch server.js",

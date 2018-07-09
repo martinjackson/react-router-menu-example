@@ -4,17 +4,20 @@
   "description": "testing out react-router-menu",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "npm install ; cd server ; npm install",
-    "start": "npm run build ; npm run server",
-    "build": "webpack -d --config config/webpack.config.js --progress",
-    "build:watch": "webpack -w -d --config config/webpack.config.js --progress",
-    "server": "cd server ; . ./env-for-build.sh ;  babel-watch server.js",
-    "pack": "webpack -p --config config/webpack.config.js --progress",
+    "setup": "yarn ; cd server ; yarn",
+    "start": "yarn build ; yarn server; google-chrome http://localhost:3001/",
+
+    "build": "webpack -d --mode development  --progress",
+    "server": "cd server ; npx babel-watch server.js 3001 &",
+
     "dev": "npm-run-all --parallel watch:*",
-    "watch:hotload": "webpack-dev-server --config config/webpack.config.js --devtool eval-source --progress --colors --hot --inline --history-api-fallback | grep -v 'built' ",
+    "watch:hotload": "webpack-dev-server --mode development  --devtool eval-source --progress --colors | grep -v 'built' ",
     "watch:start-api": "cd server; sudo ./node_modules/.bin/nodemon server.js 8081 ",
-    "watch:start-browser": "google-chrome http://localhost:8080/"
+    "watch:start-browser": "google-chrome http://localhost:8080/",
+
+    "build:watch": "webpack -w -d --mode development  --progress",
+    "pack": "webpack -p --mode production  --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "react",
@@ -39,13 +42,14 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015-webpack": "^6.4.3",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.9",
+    "css-loader": "^1.0.0",
     "file-loader": "^1.1.9",
     "json-loader": "^0.5.7",
-    "nodemon": "^1.15.1",
+    "nodemon": "^1.17.5",
     "npm-run-all": "^4.1.2",
-    "style-loader": "^0.20.2",
-    "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1"
+    "style-loader": "^0.21.0",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   }
 }
