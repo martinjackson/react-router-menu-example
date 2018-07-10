@@ -4,7 +4,7 @@
 This is a example project: React FrontEnd and Node API back end.
 
 It is using code from Djyde's [react-router-menu](https://github.com/djyde/react-router-menu), but
-upgrading to React-Router 4.x, React 16.x.  I haven't given the code changes back to his project.
+upgraded to use React-Router 4.x, React 16.x.  I haven't given the code changes back to his project.
 
 The project is split into **_two_** sections:
 - **Front-End** Single Page App with React, React-Router, React-Router-Menu components.  <br/>These modules can be found in `src/` directory.
