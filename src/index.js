@@ -7,6 +7,8 @@ import RRM from './ReactRouterMenu'    // from 'react-router-menu'
 import Page from './Page'
 import Status from './Status'
 
+import './index.css'
+
 // Declare the routes
 const mtree = {
   title: 'App',

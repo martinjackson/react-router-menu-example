@@ -4,6 +4,8 @@ import axios from 'axios';
 import autoBind from 'react-autobind';
 const ReactMarkdown = require('react-markdown')
 
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 
 class Status extends Component {
 
@@ -37,9 +39,10 @@ class Status extends Component {
 
   table(obj) {
       var keys = Object.keys(obj);
+      const head={background: 'green', color: 'white'}
 
       return <table border="1">
-                 <thead><tr><th>Key</th><th>Value</th></tr></thead>
+                 <thead style={head}><tr><th>Key</th><th>Value</th></tr></thead>
                  <tbody>{keys.map( k => this.row(k, obj[k]) )}</tbody>
              </table>
   }
@@ -52,23 +55,33 @@ class Status extends Component {
   render() {
 
     const err = this.state.error ? <div><hr />{this.state.error}</div> : null
-    const lf = {width: '100%', alignItems: 'flex-end'}
-    const st = {width: '100%'}
-    const dv = {display: 'flex',  justifyContent: 'center'}
+    const right={textAlign:'right'}
+
     return (
-       <div>
-           <div style={dv}>
-             <strong style={lf}>API request:</strong>
-             <span style={st}>{this.state.url}</span>
-           </div>
-           <div style={dv}>
-             <strong style={lf}>returned:</strong>
-             <span style={st}>{this.table(this.state.data)}</span>
-           </div>
+      <Grid fluid>
+        <Row>
+          <Col xs={6} md={3} style={right}>
+            <strong>API request:</strong>
+          </Col>
+          <Col xs={6} md={3}>
+            <span>{this.state.url}</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={6} md={3} style={right}>
+            <strong>returned:</strong>
+          </Col>
+          <Col xs={6} md={3}>
+            <span>{this.table(this.state.data)}</span>
+          </Col>
+        </Row>
+        <Row>
           {err}
-       </div>
+        </Row>
+      </Grid>
     );
   }
 
   }
+
 export default Status;
