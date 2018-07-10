@@ -5,7 +5,7 @@ import autoBind from 'react-autobind';
 const ReactMarkdown = require('react-markdown')
 
 
-class Page extends Component {
+export default class Page extends Component {
 
   constructor(props) {
     super(props);
@@ -41,4 +41,3 @@ class Page extends Component {
   }
 
   }
-export default Page;

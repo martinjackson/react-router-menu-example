@@ -7,7 +7,7 @@ const ReactMarkdown = require('react-markdown')
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
-class Status extends Component {
+export default class Status extends Component {
 
   constructor(props) {
     super(props);
@@ -83,5 +83,3 @@ class Status extends Component {
   }
 
   }
-
-export default Status;

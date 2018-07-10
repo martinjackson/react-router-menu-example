@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import RRM from './ReactRouterMenu'    // from 'react-router-menu'
 import Page from './Page'
 import Status from './Status'
+import HelloWorld from './HelloWorld.tsx'
 
 import './index.css'
 
@@ -15,10 +16,11 @@ const mtree = {
   path: '/',
   component: App,
   childRoutes: [
-    { title: 'Home',   path: '/home',    component: () => <div>Home</div> },
-    { title: 'About',  path: '/about',   component: () => <div>About</div> },
-    { title: 'Info',   path: '/info',    component: () => <Page url='Info.md' /> },
-    { title: 'Server', path: '/server',  component: () => <Status /> },
+    { title: 'Home',       path: '/home',       component: () => <div>Home</div> },
+    { title: 'About',      path: '/about',      component: () => <div>About</div> },
+    { title: 'Info',       path: '/info',       component: () => <Page url='Info.md' /> },
+    { title: 'API',        path: '/server',     component: () => <Status /> },
+    { title: 'TypeScript', path: '/typescript', component: () => <HelloWorld name='World'/> },
     {
       title: 'Help',
       childRoutes: [
