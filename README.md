@@ -1,8 +1,10 @@
 
 ## Description
 
-This is a test project using code from Djyde's [react-router-menu](https://github.com/djyde/react-router-menu), but
-upgrading to React-Router 4.x, React 16.x.
+This is a example project: React FrontEnd and Node API back end.
+
+It is using code from Djyde's [react-router-menu](https://github.com/djyde/react-router-menu), but
+upgrading to React-Router 4.x, React 16.x.  I haven't given the code changes back to his project.
 
 The project is split into **_two_** sections:
 - **Front-End** Single Page App with React, React-Router, React-Router-Menu components.  <br/>These modules can be found in `src/` directory.
@@ -11,12 +13,15 @@ The project is split into **_two_** sections:
 ## Getting Started
 
 - __Clone this project__
-- have yarn (or npm) fetch all the project's dependencies
-
 ```
   cd ~/projects
-  git clone https://github.com/martinjackson/react-router-menu-example.git
-  cd react-router-menu-example
+  git clone https://github.com/martinjackson/react-node-example.git
+  cd react-node-example
+```
+- __yarn setup__ (or npm run setup) to fetch all the project's dependencies
+for __*both*__ the __Front-End__ and the __Back-End__
+
+```
   yarn setup    (or npm run setup)
 ```
 
@@ -51,11 +56,9 @@ like `yarn build`, but optimizes the bundle.js for the best performance.  The bu
 
 ## Project Structure
 
-```
+```bash
 $ tree -I node_modules
 .
-├── config
-│   └── webpack.config.js         config file for webpack
 ├── package.json                  project's npm requirements and scripts
 ├── README.md                     This introduction
 ├── server
@@ -65,9 +68,16 @@ $ tree -I node_modules
 │   │   ├── bundle.js.map         sourcemaps built by webpack   
 │   │   └── index.html            starter html
 │   └── server.js                 logic for NodeJS back-end
-└── src
-    ├── index.js                  Front-end entry
-    └── ReactRouterMenu.js        code modified from react-route-menu
+├── src
+│   ├── index.js                  Front-end entry
+│   ├── index.css                 style modification from default menu colors
+│   ├── HelloWorld.tsx            example TypeScript React Component
+│   ├── Page.js                   React Component asking server API for markdown file
+│   ├── ReactRouterMenu.js        code modified from react-route-menu
+│   └── Status.js                 React Component asking server API for live JSON
+├── tsconfig.json                 TypeScript config for webpack
+└── webpack.config.js             config file for webpack
+
 
 ```
 
