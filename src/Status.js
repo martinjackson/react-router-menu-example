@@ -22,6 +22,10 @@ export default class Status extends Component {
   }
 
   componentDidMount() {
+    this.loadInfo()
+  }
+
+  loadInfo() {
       const name = 'Martin'
       const url = `/api/echo/${name}`
       axios.get(url)
@@ -77,6 +81,12 @@ export default class Status extends Component {
         </Row>
         <Row>
           {err}
+        </Row>
+        <Row>
+          <button type="button" onClick={this.loadInfo}
+            ref="update" id="update">
+            Update
+          </button>
         </Row>
       </Grid>
     );
