@@ -1,6 +1,6 @@
 {
-  "name": "react-router-menu-example",
-  "version": "0.1.0",
+  "name": "react-node-example",
+  "version": "0.1.2",
   "description": "testing out react-router-menu",
   "main": "index.js",
   "scripts": {
@@ -19,9 +19,16 @@
   "keywords": [
     "react",
     "react-router",
-    "react-router-menu"
+    "react-router-menu",
+    "node",
+    "express"
   ],
-  "author": "Martin A. Jackson",
+  "author": "Martin A. Jackson <martin.a.jackson@gmail.com> (http://martinjackson.github.io)",
+  "homepage": "https://github.com/martinjackson/react-node-example#readme",
+  "bugs": {
+    "url": "https://github.com/martinjackson/react-node-example/issues",
+    "email": "martin.a.jackson@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "@version/react-router-v3": "^1.0.0",
