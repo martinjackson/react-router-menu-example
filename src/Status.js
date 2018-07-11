@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import autoBind from 'react-autobind';
-const ReactMarkdown = require('react-markdown')
-
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
+import DisplayObjAsTable from './DisplayObjAsTable';
 
 export default class Status extends Component {
 
@@ -33,61 +32,34 @@ export default class Status extends Component {
         .catch((error) => {   this.setState({'error': error.message}); });
   }
 
-  pretty(obj) {
-    return (typeof obj === 'string' || obj instanceof String) ? obj : JSON.stringify(obj, undefined, 2)
-  }
-
-  row(k, val) {
-      return <tr key={k}><td>{k}</td><td>{this.pretty(val)}</td></tr>
-  }
-
-  table(obj) {
-      var keys = Object.keys(obj);
-      const head={background: 'green', color: 'white'}
-
-      return <table border="1">
-                 <thead style={head}><tr><th>Key</th><th>Value</th></tr></thead>
-                 <tbody>{keys.map( k => this.row(k, obj[k]) )}</tbody>
-             </table>
-  }
-
-
   loaded() {
     console.log(this.state.url, 'loaded.');
   }
 
+  columns(prompt, data=<span></span>) {
+    const right={textAlign:'right'}
+
+    return  <Row>
+              <Col xs={6} md={3} style={right}>
+                <strong>{prompt}</strong>
+              </Col>
+              <Col xs={6} md={3}>
+                {data}
+              </Col>
+            </Row>
+  }
+
   render() {
 
-    const err = this.state.error ? <div><hr />{this.state.error}</div> : null
-    const right={textAlign:'right'}
+    const err = this.state.error ? <Row><hr />{this.state.error}</Row> : null
+    const reload = <button onClick={this.loadInfo}>Update</button>
 
     return (
       <Grid fluid>
-        <Row>
-          <Col xs={6} md={3} style={right}>
-            <strong>API request:</strong>
-          </Col>
-          <Col xs={6} md={3}>
-            <span>{this.state.url}</span>
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={6} md={3} style={right}>
-            <strong>returned:</strong>
-          </Col>
-          <Col xs={6} md={3}>
-            <span>{this.table(this.state.data)}</span>
-          </Col>
-        </Row>
-        <Row>
-          {err}
-        </Row>
-        <Row>
-          <button type="button" onClick={this.loadInfo}
-            ref="update" id="update">
-            Update
-          </button>
-        </Row>
+         { this.columns('API request:', <span>{this.state.url}</span>) }
+         { this.columns('returned:', <DisplayObjAsTable obj={this.state.data} />) }
+         { this.columns(reload) }
+         {err}
       </Grid>
     );
   }
