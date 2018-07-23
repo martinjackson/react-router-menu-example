@@ -1,4 +1,6 @@
 
+# React-Node-Example
+
 ## Description
 
 This is a example project: React FrontEnd and Node API back end.
@@ -7,21 +9,25 @@ It is using code from Djyde's [react-router-menu](https://github.com/djyde/react
 upgraded to use React-Router 4.x, React 16.x.  I haven't given the code changes back to his project.
 
 The project is split into **_two_** sections:
+
 - **Front-End** Single Page App with React, React-Router, React-Router-Menu components.  <br/>These modules can be found in `src/` directory.
 - **Back-End** NodeJS, Express, API logic needed by application.  <br/>These modules can be found in `server/` directory.
 
 ## Getting Started
 
 - __Clone this project__
-```
+
+```bash
   cd ~/projects
   git clone https://github.com/martinjackson/react-node-example.git
   cd react-node-example
 ```
+
 - __yarn setup__ (or npm run setup) to fetch all the project's dependencies
+
 for __*both*__ the __Front-End__ and the __Back-End__
 
-```
+```bash
   yarn setup    (or npm run setup)
 ```
 
@@ -30,9 +36,11 @@ for __*both*__ the __Front-End__ and the __Back-End__
 In the project directory, you can run:
 
 ### `yarn dev`   (live development environment)
+
 Runs the app in the development mode with every source file save being hot-loaded into the Browser
 
 All three of these items are run in parallel:
+
 - **"watch:hotload"**:
    runs webpack-dev-server on Port 8080
 
@@ -44,9 +52,9 @@ All three of these items are run in parallel:
    opens up the google-chrome browser to http://localhost:8080/"
 
 ### `yarn start`   (near production testing)
+
 - builds the bundle.js with sourcemap and debug info (aka. `yarn build`)
 - runs the server for API calls and serving the application (`yarn server`).
-
 
 ### `yarn pack` (prep for a production release)
 
@@ -80,7 +88,6 @@ $ tree -I node_modules
 
 
 ```
-
 
 ----------------
 
