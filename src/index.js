@@ -7,6 +7,7 @@ import RRM from './ReactRouterMenu'    // from 'react-router-menu'
 import Page from './Page'
 import Status from './Status'
 import HelloWorld from './HelloWorld.tsx'
+import About from './About'
 
 import './index.css'
 
@@ -17,7 +18,7 @@ const mtree = {
   component: App,
   childRoutes: [
     { title: 'Home',       path: '/home',       component: () => <div>Home</div> },
-    { title: 'About',      path: '/about',      component: () => <div>About</div> },
+    { title: 'About',      path: '/about',      component: () => <About /> },
     { title: 'Info',       path: '/info',       component: () => <Page url='Info.md' /> },
     { title: 'API',        path: '/server',     component: () => <Status /> },
     { title: 'TypeScript', path: '/typescript', component: () => <HelloWorld name='World'/> },
