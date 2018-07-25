@@ -27,9 +27,10 @@ module.exports = {
      // --history-api-fallback
      historyApiFallback: true,
 
-     host: '0.0.0.0',     // allow more than localhost
+     // host: '0.0.0.0',     // allow more than localhost (0.0.0.0 confuses win10)
      port: 8080,
      contentBase: './server/public/',
+     open: true,
 
      // allow NodeJS to run side-by-side with webpack-dev-server
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
