@@ -1,4 +1,5 @@
 const path = require('path');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function resolve (dir) {
     return path.join(__dirname, dir)
@@ -15,6 +16,7 @@ module.exports = {
     resolve('src'),
     "node_modules" ]
     },
+  devtool: 'source-map',   
   devServer: {
 
      // dont include boolean equivalent of these commandline switches, it will not work here
@@ -35,6 +37,9 @@ module.exports = {
      // allow NodeJS to run side-by-side with webpack-dev-server
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
   },
+  plugins: [
+    new ProgressBarPlugin()
+  ],
   module: {
     rules: [
           {
@@ -42,7 +47,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                      presets: ['es2015', 'react']
+                      presets: ['env', 'react']
                    },
           },
 
