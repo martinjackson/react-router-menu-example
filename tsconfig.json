@@ -9,8 +9,11 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "target": "es5"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "silent": true
   },  
   "include": [
-    "./src/**/*"
+    "./src/**/*.{ts,tsx}"
   ]
 }

@@ -33,6 +33,7 @@ module.exports = {
      port: 8080,
      contentBase: './server/public/',
      open: true,
+     clientLogLevel: 'none',
 
      // allow NodeJS to run side-by-side with webpack-dev-server
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
@@ -53,7 +54,7 @@ module.exports = {
 
           {
             test: /\.tsx?$/,
-            loader: "awesome-typescript-loader"
+            loader: "awesome-typescript-loader",
           },
           
           {

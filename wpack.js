@@ -15,8 +15,7 @@ compiler.run((err, stats) => {
 
   const summary = stats.toString({chunks: false, colors: true});
   // remove lines with [built]
-  const arr = summary.split('\n');
-  const report = arr.filter(line => !line.include('[built]')).join('\n');
+  const report = summary.split('\n').filter(line => !line.includes('[built]')).join('\n');
   process.stdout.write(report + '\n');
 
   if (stats.hasErrors()) {

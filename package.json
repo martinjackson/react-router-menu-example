@@ -6,12 +6,12 @@
   "scripts": {
     "setup": "yarn && cd server && yarn",
     "start": "npm-run-all --parallel start:*",
-    "dev": "npm-run-all --parallel dev:*",
+    "dev": "npm-run-all --parallel build:*",
     "start:front-end": "webpack --mode development  --progress",
     "start:server": "cd server && npx babel-watch server.js 3001 ",
     "start:browser": "wait-on http://localhost:3001/ && opn http://localhost:3001/",
-    "dev:build-front-end": "webpack-dev-server --mode development  --devtool eval-source --progress --colors  --hot --inline | grep -v 'built' ",
-    "dev:build-back-end": "cd server && npx babel-watch server.js 8081 ",
+    "build:front-end": "webpack-dev-server --mode development --colors  --hot  | grep -v 'built' ",
+    "build:back-end": "cd server && npx babel-watch server.js 8081 ",
     "pack": "webpack -p --mode production  --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
