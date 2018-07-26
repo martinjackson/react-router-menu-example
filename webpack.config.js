@@ -17,6 +17,7 @@ module.exports = {
     "node_modules" ]
     },
   devtool: 'source-map',   
+  stats: 'normal',    // 'minimal',    // 'errors-only',
   devServer: {
 
      // dont include boolean equivalent of these commandline switches, it will not work here
@@ -34,6 +35,7 @@ module.exports = {
      contentBase: './server/public/',
      open: true,
      clientLogLevel: 'none',
+     stats: 'errors-only',
 
      // allow NodeJS to run side-by-side with webpack-dev-server
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend

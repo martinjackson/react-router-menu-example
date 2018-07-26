@@ -1,10 +1,17 @@
 const webpack = require("webpack");
-
 const config = require('./webpack.config.js');
 
 config.mode = process.env.NODE_ENV || 'development';
-
 const compiler = webpack(config);
+
+const toSkip = (line) => {
+  return  line.includes('[built]') || line.includes('Hash:') || line.includes('Version:') || line.includes('Time:') 
+}
+
+const minimal = (summary) => {
+  const report = summary.split('\n').filter(line => !toSkip(line)).join('\n') + '\n';
+  return(report);
+}
 
 compiler.run((err, stats) => {
   if (err) {
@@ -14,9 +21,7 @@ compiler.run((err, stats) => {
   }
 
   const summary = stats.toString({chunks: false, colors: true});
-  // remove lines with [built]
-  const report = summary.split('\n').filter(line => !line.includes('[built]')).join('\n');
-  process.stdout.write(report + '\n');
+  process.stdout.write(minimal(summary));
 
   if (stats.hasErrors()) {
     process.exit(2);

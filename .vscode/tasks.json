@@ -5,14 +5,14 @@
     "tasks": [
         {
             "type": "npm",
-            "script": "dev:build-front-end",
+            "script": "build:front-end",
             "problemMatcher": [
                 "$go"
             ]
         },
         {
             "type": "npm",
-            "script": "dev:build-back-end",
+            "script": "build:back-end",
             "problemMatcher": [
                 "$go"
             ]

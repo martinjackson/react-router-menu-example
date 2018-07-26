@@ -41,24 +41,26 @@ Runs the app in the development mode with every source file save being hot-loade
 
 All three of these items are run in parallel:
 
-- **"watch:hotload"**:
+- **"build:front-end"**:
    runs webpack-dev-server on Port 8080
+   (will launch the browser http://localhost:8080)
 
-- **"watch:start-api"**:
+- **"build:back-end"**:
    starts the API server (Nodejs/Express) on port 8081
    so anything /api/ the webpack dev server will forward the request to port 8081 for a response
 
-- **"watch:start-browser"**:
-   opens up the google-chrome browser to http://localhost:8080/"
 
 ### `yarn start`   (near production testing)
 
 - builds the bundle.js with sourcemap and debug info (aka. `yarn build`)
 - runs the server for API calls and serving the application (`yarn server`).
+- waiting on you to run `yarn run browser'
 
-### `yarn pack` (prep for a production release)
+### `yarn run browser`   (near production testing, launch the browser)
 
-like `yarn build`, but optimizes the bundle.js for the best performance.  The build is minified and your app is ready to be deployed!
+### `yarn run pack` (prep for a production release)
+
+like `yarn run build:front-end`, but optimizes the bundle.js for the best performance.  The build is minified and your app is ready to be deployed!
 
 ----------------
 
@@ -84,8 +86,8 @@ $ tree -I node_modules
 │   ├── ReactRouterMenu.js        code modified from react-route-menu
 │   └── Status.js                 React Component asking server API for live JSON
 ├── tsconfig.json                 TypeScript config for webpack
-└── webpack.config.js             config file for webpack
-
+├── webpack.config.js             config file for webpack
+└── wpack.js                      an equivalent to `npx webpack -d --mode development --progress` with a briefer output
 
 ```
 
@@ -98,3 +100,11 @@ $ tree -I node_modules
 | -w          | --watch                          |
 | -d          | --debug --devtool cheap-module-eval-source-map --output-pathinfo |
 | -p          | 	--optimize-minimize --define process.env.NODE_ENV="production", see building for production |
+
+### Yarn tips
+
+> info There appears to be trouble with your network connection. Retrying...
+
+```bash
+yarn install --network-timeout 1000000
+```
