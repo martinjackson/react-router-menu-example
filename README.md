@@ -39,7 +39,8 @@ In the project directory, you can run:
 
 Runs the app in the development mode with every source file save being hot-loaded into the Browser
 
-All three of these items are run in parallel:
+The builds back-end and front-end; both are run in parallel
+and both source directories are watched for changes.
 
 - **"build:front-end"**:
    runs webpack-dev-server on Port 8080
@@ -52,7 +53,7 @@ All three of these items are run in parallel:
 
 ### `yarn start`   (near production testing)
 
-- builds the bundle.js with sourcemap and debug info (aka. `yarn build`)
+- builds the bundle.js with sourcemap and debug info
 - runs the server for API calls and serving the application (`yarn server`).
 - waiting on you to run `yarn run browser'
 
