@@ -10,8 +10,8 @@ upgraded to use React-Router 4.x, React 16.x.  I haven't given the code changes 
 
 The project is split into **_two_** sections:
 
-- **Front-End** Single Page App with React, React-Router, React-Router-Menu components.  <br/>These modules can be found in `src/` directory.
-- **Back-End** NodeJS, Express, API logic needed by application.  <br/>These modules can be found in `server/` directory.
+- **Front-End** (`src/` directory) Single Page App with React, React-Router, React-Router-Menu components.
+- **Back-End** (`server/` directory) NodeJS, Express, API logic needed by application.
 
 ## Getting Started
 
@@ -44,12 +44,11 @@ and both source directories are watched for changes.
 
 - **"build:front-end"**:
    runs webpack-dev-server on Port 8080
-   (will launch the browser http://localhost:8080)
+   (will launch the browser [http://localhost:8080](]http://localhost:8080))
 
 - **"build:back-end"**:
    starts the API server (Nodejs/Express) on port 8081
    so anything /api/ the webpack dev server will forward the request to port 8081 for a response
-
 
 ### `yarn start`   (near production testing)
 
@@ -76,7 +75,7 @@ $ tree -I node_modules
 │   ├── package.json              seperate project dependancies for the back-end
 │   ├── public
 │   │   ├── bundle.js             built by webpack from src/*.js
-│   │   ├── bundle.js.map         sourcemaps built by webpack   
+│   │   ├── bundle.js.map         sourcemaps built by webpack
 │   │   └── index.html            starter html
 │   └── server.js                 logic for NodeJS back-end
 ├── src
@@ -100,7 +99,7 @@ $ tree -I node_modules
 | ----------- | -------------------------------- |
 | -w          | --watch                          |
 | -d          | --debug --devtool cheap-module-eval-source-map --output-pathinfo |
-| -p          | 	--optimize-minimize --define process.env.NODE_ENV="production", see building for production |
+| -p          | --optimize-minimize --define process.env.NODE_ENV="production", see building for production |
 
 ### Yarn tips
 

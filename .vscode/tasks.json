@@ -6,9 +6,29 @@
         {
             "type": "npm",
             "script": "build:front-end",
-            "problemMatcher": [
-                "$go"
-            ]
+            "isBackground": true,
+            "problemMatcher": {
+                "severity": "error",
+                "fileLocation": "absolute",
+                "pattern": [
+                      {
+                            "regexp": "^ERROR in (\\S+).*\nModule build failed \\(from [^\\)]+\\):([^\\)]+|\\n)* \\((\\d+):(\\d+)\\)$",
+                            "file": 1,
+                            "message": 2,
+                            "line": 3,
+                            "column": 4
+                      },
+                      {
+                            "regexp": ".*",
+                            "message": 0
+                      }
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Compiling...", 
+                    "endsPattern": "Compiled successfully."                    
+                }
+            }
         },
         {
             "type": "npm",
