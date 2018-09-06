@@ -1,5 +1,5 @@
 const path = require('path');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function resolve (dir) {
     return path.join(__dirname, dir)
@@ -41,7 +41,7 @@ module.exports = {
      proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
   },
   plugins: [
-    new ProgressBarPlugin()
+    new ProgressBarPlugin(),
   ],
   module: {
     rules: [
