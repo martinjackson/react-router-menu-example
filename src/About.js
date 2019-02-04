@@ -4,7 +4,7 @@ import axios from 'axios';
 import autoBind from 'react-autobind';
 import ReactMarkdown from 'react-markdown';
 
-exportdefault class About extends Component {
+export default class About extends Component {
 
   constructor(props) {
     super(props);

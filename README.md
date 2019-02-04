@@ -1,4 +1,17 @@
 
+[DEPRECATED]
+Please consider using [create-simple-react](https://www.npmjs.com/package/simple-react-app) instead.
+
+```bash
+npm init simple-react
+```
+
+For an Example of a Node-Express server.js look [here](https://github.com/martinjackson/react-node-example/blob/master/server/server.js)
+
+This project remains for research purposes only.
+
+Martin Jackson <martin.a.jackson@gmail.com>
+
 # React-Node-Example
 
 ## Description
@@ -107,4 +120,13 @@ $ tree -I node_modules
 
 ```bash
 yarn install --network-timeout 1000000
+```
+
+### TODO
+
+Are these used?
+
+```json
+    "webpack-build-logger": "^0.0.5",
+    "webpack-logging-plugin": "^0.1.2"
 ```

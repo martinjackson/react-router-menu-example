@@ -16,7 +16,7 @@ module.exports = {
     resolve('src'),
     "node_modules" ]
     },
-  devtool: 'source-map',   
+  devtool: 'source-map',
   stats: 'normal',    // 'minimal',    // 'errors-only',
   devServer: {
 
@@ -50,7 +50,7 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             query: {
-                      presets: ['env', 'react']
+              presets: ['@babel/preset-env', '@babel/preset-react']
                    },
           },
 
@@ -58,7 +58,7 @@ module.exports = {
             test: /\.tsx?$/,
             loader: "awesome-typescript-loader",
           },
-          
+
           {
               test: /\.css$/,
               use: [ 'style-loader', 'css-loader' ]
