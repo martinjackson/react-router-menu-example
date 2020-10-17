@@ -1,62 +1,90 @@
 const path = require('path');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 function resolve (dir) {
     return path.join(__dirname, dir)
 }
 
-module.exports = {
-  entry: './src/index.js',
+// instead of @babel/polyfill
+require("core-js/stable");
+require("regenerator-runtime/runtime");
+
+/*
+add the following if you want hash to be included in the file name
   output: {
-        path: resolve('./server/public/'),
-        filename: 'bundle.js'
+        chunkFilename: '[name]-[chunkhash].js'
     },
-  resolve:{
-    modules: [
-    resolve('src'),
-    "node_modules" ]
+*/
+
+module.exports = {
+  entry: {
+    main: './src/index.js',
+  },
+  output: {
+        path: resolve('./public/'),
+        filename: '[name].js',
+    },
+  externals: {
+      'react': 'React', // Case matters here
+      'react-dom' : 'ReactDOM' // Case matters here
+    },
+    performance : {
+      hints : false
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "initial",
+          },
+        },
+      },
     },
   devtool: 'source-map',
-  stats: 'normal',    // 'minimal',    // 'errors-only',
+  resolve:{
+    extensions: ['.tsx','.ts','.js'],
+    modules: [ resolve('src'), "node_modules" ],
+    fallback: { "path": require.resolve("path-browserify") }
+    },
   devServer: {
-
-     // dont include boolean equivalent of these commandline switches, it will not work here
-     // these are in the package.json where the following is executed
-     //  webpack-dev-server --mode development --devtool eval-source --progress --colors
-
-     // CLI only    --colors  --progress
-     // Docs lie --hot --inline are CLI Only
-
-     // --history-api-fallback
      historyApiFallback: true,
-
-     // host: '0.0.0.0',     // allow more than localhost (0.0.0.0 confuses win10)
+     host: '0.0.0.0',     // allow more than localhost
      port: 8080,
-     contentBase: './server/public/',
-     open: true,
-     clientLogLevel: 'none',
-     stats: 'errors-only',
-
-     // allow NodeJS to run side-by-side with webpack-dev-server
-     proxy: {  '/api/*': 'http://localhost:8081/' }   // <- backend
+     contentBase: ['./src/','./public/','./public/assets/'],
+     proxy: {  '/api/*': 'http://localhost:8081/' },   // <- backend
+     stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: true,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false
+    }
   },
-  plugins: [
-    new ProgressBarPlugin(),
-  ],
   module: {
     rules: [
           {
             test: /^(?!.*\.{test,min}\.js$).*\.js$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
-            query: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-                   },
+            options: {
+              configFile: './babel.config.js'
+            }
           },
 
           {
             test: /\.tsx?$/,
-            loader: "awesome-typescript-loader",
+            use: 'ts-loader',
+            exclude: /node_modules/,
           },
 
           {
@@ -68,9 +96,9 @@ module.exports = {
           {
              test: /\.svg|\.png|\.gif|\.jpg$/,
              loader: 'file-loader',
-             query: {
-               name: 'static/media/[name].[hash:8].[ext]'
-             }
+             options: {
+              name: '[path][name].[ext]',
+            },
           },
 
           {

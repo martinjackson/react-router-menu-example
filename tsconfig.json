@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "module": "commonjs",
-    "outDir": "./build/",
-    "preserveConstEnums": true,
-    "removeComments": true,
+    "outDir": "./public/",
     "sourceMap": true,
     "noImplicitAny": true,
-    "target": "es5"
-  },
-  "awesomeTypescriptLoaderOptions": {
-    "silent": true
-  },  
-  "include": [
-    "./src/**/*.{ts,tsx}"
-  ]
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true
+  }
 }
+
